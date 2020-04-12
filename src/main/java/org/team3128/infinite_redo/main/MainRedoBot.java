@@ -79,7 +79,7 @@ public class MainRedoBot extends NarwhalRobot {
 
     @Override
     protected void updateDashboard() {
-        //Empty because we won't be actually logging anything to SmartDashboard
+
     }
 
     @Override
