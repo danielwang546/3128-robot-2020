@@ -69,18 +69,6 @@ public class Constants extends RobotConstants{
         public static final double kP = 0.0013;
     }
 
-    public static class AutonomousDriveConstants {
-        //also shamelessly copied from compbot's constants
-        public static final double TRACK_RADIUS = 23.89231390411386;
-        public static final double MIN_TURNING_RADIUS = 40;
-        public static final double MIN_PATH_SPEED = 20;
-        public static final double MAX_PATH_SPEED = 120;
-        public static final double MIN_LOOKAHEAD_DISTANCE = 14;
-        public static final double MAX_LOOKAHEAD_DISTANCE = 30;
-        public static final double MAX_TURN_ERROR = 2;
-        public static final double MAX_PID_STOP_SPEED = 8;        
-    }
-
     public static class VisionConstants {
 
     }
@@ -94,7 +82,8 @@ public class Constants extends RobotConstants{
     }
 
     public static class ElevatorContants {
-
+        public static final int elevatorMotorLeaderID = 0;
+        public static final int elevatorMotorFollowerID = 1;
     }
 
     //We may need more constants classes, these are just the ones I thought we would definitely need
