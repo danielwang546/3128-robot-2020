@@ -3,6 +3,8 @@ package org.team3128.infinite_redo.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import org.team3128.common.generics.RobotConstants;
+import org.team3128.common.utility.datatypes.PIDConstants;
+import org.team3128.common.utility.units.Length;
 import org.team3128.compbot.subsystems.Constants.DriveConstants;
 
 public class Constants extends RobotConstants{
@@ -81,9 +83,24 @@ public class Constants extends RobotConstants{
 
     }
 
-    public static class ElevatorContants {
-        public static final int elevatorMotorLeaderID = 0;
-        public static final int elevatorMotorFollowerID = 1;
+    public static class ElevatorConstants {
+        public static final int ELEVATOR_MOTOR_LEADER_ID = 0;
+        public static final int ELEVATOR_MOTOR_FOLLOWER_ID = 1;
+        public static final int ELEVATOR_LIMIT_SWITCH_ID = 0;
+
+        public static final NeutralMode ELEVATOR_NEUTRAL_MODE = NeutralMode.Brake;
+        public static final NeutralMode ELEVATOR_DISABLED_NEUTRAL_MODE = NeutralMode.Coast;
+
+        public static final double WINCH_GEARING = 68 / 12; //WINCH_GEARING rotations of the motor = 1 rotation of the winch
+        //I have no idea if this number is right, have to ask mech
+        public static final double WINCH_CIRCUMFERENCE = 2.375 * Math.PI; //In inches
+
+        public static final PIDConstants ElevatorPID = new PIDConstants(0, 0, 0, 0); //Can't tune these PID constants
+        public static final double MAX_ELEVATOR_HEIGHT = 100 * Length.in; //Unknown as of right now
+        public static final double SATURATION_LIMIT = 2 / ElevatorPID.kI;
+        public static final double ELEVATOR_HEIGHT_THRESHOLD = 1.5; //Allowable height(inches) we can go above the 
+		public static final double ZEROING_POWER = -0.3;
+        
     }
 
     //We may need more constants classes, these are just the ones I thought we would definitely need
