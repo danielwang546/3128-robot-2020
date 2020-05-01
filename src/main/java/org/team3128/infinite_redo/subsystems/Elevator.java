@@ -15,7 +15,7 @@ public class Elevator extends Threaded{
 
     public static final Elevator instance = new Elevator();
 
-    public LazyTalonFX winchMotorLeader, winchMotorFollower;
+    public LazyTalonFX winchMotorLeader;
     public DigitalInput limitSwitch;
     public ElevatorState elevatorState;
     
@@ -62,7 +62,6 @@ public class Elevator extends Threaded{
 
         if (limitSwitch.get()) {
             winchMotorLeader.setSelectedSensorPosition(0);
-            winchMotorFollower.setSelectedSensorPosition(0);
         }
         
         current = getCurrentHeight();
@@ -110,14 +109,8 @@ public class Elevator extends Threaded{
 
     private void configMotors() {
         winchMotorLeader = new LazyTalonFX(Constants.ElevatorConstants.ELEVATOR_MOTOR_LEADER_ID);
-        winchMotorFollower = new LazyTalonFX(Constants.ElevatorConstants.ELEVATOR_MOTOR_FOLLOWER_ID);
-
-        winchMotorFollower.follow(winchMotorLeader);
-        winchMotorFollower.setInverted(true); //Looks like it's inverted but can't be sure
 
         winchMotorLeader.setNeutralMode(Constants.ElevatorConstants.ELEVATOR_NEUTRAL_MODE);
-        winchMotorFollower.setNeutralMode(Constants.ElevatorConstants.ELEVATOR_NEUTRAL_MODE);
-
         winchMotorLeader.setSelectedSensorPosition(0); //Starting at zeroed state
     }
 

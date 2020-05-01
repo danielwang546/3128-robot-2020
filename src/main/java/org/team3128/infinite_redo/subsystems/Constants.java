@@ -84,8 +84,7 @@ public class Constants extends RobotConstants{
     }
 
     public static class ElevatorConstants {
-        public static final int ELEVATOR_MOTOR_LEADER_ID = 0;
-        public static final int ELEVATOR_MOTOR_FOLLOWER_ID = 1;
+        public static final int ELEVATOR_MOTOR_LEADER_ID = 5;
         public static final int ELEVATOR_LIMIT_SWITCH_ID = 0;
 
         public static final NeutralMode ELEVATOR_NEUTRAL_MODE = NeutralMode.Brake;
