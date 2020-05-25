@@ -4,18 +4,15 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import org.team3128.common.generics.RobotConstants;
 import org.team3128.common.utility.datatypes.PIDConstants;
-import org.team3128.common.utility.units.Angle;
 import org.team3128.common.utility.units.Length;
 import org.team3128.compbot.subsystems.Constants.DriveConstants;
-
-import edu.wpi.first.wpilibj.AnalogAccelerometer;
 
 public class Constants extends RobotConstants{
 
     //Some of these constants will likely be empty/untuned as we won't be tuning these on an actual bot
 
     public static class GameConstants {
-        public static final double visionTargetWidth = 28.0 * Length.in;
+
     }
 
     public static class MechanismConstants {
@@ -75,16 +72,7 @@ public class Constants extends RobotConstants{
     }
 
     public static class VisionConstants {
-        //Will be added once limelight positioning is decided
-        public static final double topLLAngle = 0.0 * Length.in;
-        public static final double topLLHeight = 0.0 * Length.in;
-        public static final double topLLFrontDistance = 0.0 * Length.in;
 
-        public static final double highGoalVerticalOffset = 0.0 * Angle.DEGREES;
-        public static final double lowGoalVerticalOffset = 0.0 * Angle.DEGREES;
-        public static final PIDConstants VisionPID = new PIDConstants(0, 0, 0, 0); 
-
-        public static final double allowableVisionError = 1 * Angle.DEGREES;
     }
 
     public static class ClimberConstants {
@@ -114,5 +102,9 @@ public class Constants extends RobotConstants{
         
     }
 
-    //We may need more constants classes, these are just the ones I thought we would definitely need
+    public static class IntakeConstants {
+        public static final int TOP_MOTOR_ID = 0; //what do these need to be 
+        public static final int BOTTOM_MOTOR_ID = 0; 
+        public static final int MANIPULATOR_MOTOR_ID = 0; 
+    }
 }
