@@ -3,7 +3,7 @@ package org.team3128.infinite_redo.subsystems;
 import org.team3128.common.hardware.motor.LazyCANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class Intake{
+public class Intake {
 
     public static final Intake instance = new Intake();
 
@@ -11,6 +11,10 @@ public class Intake{
 
     private Intake() {
         configMotors();
+    }
+
+    public static Intake getInstance() {
+        return instance;
     }
 
     private void configMotors() {
