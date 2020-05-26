@@ -90,7 +90,7 @@ public class Constants extends RobotConstants{
     }
     
     public static class FourbarConstants {
-
+        public static final int MAIN_MOTOR_ID = 0;
     }
 
     public static class ElevatorConstants {
