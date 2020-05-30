@@ -117,4 +117,23 @@ public class Constants extends RobotConstants{
         public static final int BOTTOM_MOTOR_ID = 0; 
         public static final int MANIPULATOR_MOTOR_ID = 0; 
     }
+
+    public static class TurretConstants {
+        public static final int TURRET_MOTOR_LEADER_ID = 0;
+        public static final int TURRET_MOTOR_FOLLOWER_ID = 0;
+
+        public static final int LIMIT_SWITCH_0_ID = 1;
+        public static final int LIMIT_SWITCH_90_ID = 2;
+        public static final int LIMIT_SWITCH_180_ID = 3;
+
+        public static final double TURRET_GEARING = 494.5;
+
+        public static final PIDConstants TurretPID = new PIDConstants(0, 0, 0, 0); //Can't tune these PID constants
+
+        public static final double SATURATION_LIMIT = 4 / TurretPID.kI;
+        public static final double TURRET_ANGLE_THRESHOLD = 1 * Angle.DEGREES;
+
+        public static final double ZEROING_POWER = -0.6;
+
+    }
 }
