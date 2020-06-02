@@ -41,7 +41,7 @@ public class Turret extends Threaded {
     public static enum TurretState {
         ZEROED(0 * Angle.DEGREES), 
         BACKWARDS(180 * Angle.DEGREES), 
-        HIGH_GOAL(90 * Angle.DEGREES); 
+        SIDE(90 * Angle.DEGREES); 
 
         private double turretAngle; //Height in inches
 
