@@ -18,6 +18,7 @@ import org.team3128.infinite_redo.subsystems.Elevator;
 import org.team3128.infinite_redo.subsystems.Fourbar;
 import org.team3128.infinite_redo.subsystems.Intake;
 import org.team3128.infinite_redo.subsystems.Turret;
+import org.team3128.infinite_redo.subsystems.Climber;
 import org.team3128.infinite_redo.subsystems.Elevator.ElevatorState;
 import org.team3128.infinite_redo.subsystems.Fourbar.FourbarState;
 import org.team3128.infinite_redo.subsystems.Turret.TurretState;
@@ -29,13 +30,14 @@ public class MainRedoBot extends NarwhalRobot {
     static FalconDrive drive = FalconDrive.getInstance();
     private DriveCommandRunning driveCmdRunning;
 
-    ExecutorService executor = Executors.newFixedThreadPool(0); //TODO: Change later once the number of threads used are known
+    ExecutorService executor = Executors.newFixedThreadPool(4); 
     ThreadScheduler scheduler = new ThreadScheduler();
 
     public Elevator elevator = Elevator.getInstance();
     public Fourbar fourbar = Fourbar.getInstance();
     public Intake intake = Intake.getInstance();
     public Turret turret = Turret.getInstance();
+    public Climber climber = Climber.getInstance();
 
     public Joystick joystickRight, joystickLeft;
     public ListenerManager listenerLeft, listenerRight;
@@ -51,6 +53,10 @@ public class MainRedoBot extends NarwhalRobot {
         listenerRight = new ListenerManager(joystickRight);
         addListenerManager(listenerRight);
         
+        scheduler.schedule(drive, executor);
+        scheduler.schedule(elevator, executor);
+        scheduler.schedule(fourbar, executor);
+        scheduler.schedule(turret, executor);
 
         drive.resetGyro();
     }
@@ -76,6 +82,7 @@ public class MainRedoBot extends NarwhalRobot {
         listenerRight.nameControl(new Button(6), "Outtake");
         listenerRight.nameControl(new POV(0), "IntakulatorControl");
 
+        listenerLeft.nameControl(ControllerExtreme3D.TRIGGER, "Climb");
         listenerLeft.nameControl(new Button(7), "HighGoal");
         listenerLeft.nameControl(new Button(9), "Intaking");
         listenerLeft.nameControl(new Button(11), "LowGoal");
@@ -125,30 +132,39 @@ public class MainRedoBot extends NarwhalRobot {
             }
         });
 
-        listenerLeft.addButtonUpListener("HighGoal", () -> {
+        listenerLeft.addButtonDownListener("Climb", () -> {
+            climber.setisClimbing(true);
+            climber.setPower(Constants.ClimberConstants.CLIMB_POWER);
+        });
+        listenerLeft.addButtonUpListener("Climb", () -> {
+            climber.setisClimbing(false);
+            climber.setPower(0);
+        });
+
+        listenerLeft.addButtonDownListener("HighGoal", () -> {
             elevator.setState(ElevatorState.HIGH_GOAL);
             fourbar.FOURBAR_STATE = FourbarState.HIGH;
         });
 
-        listenerLeft.addButtonUpListener("Intaking", () -> {
+        listenerLeft.addButtonDownListener("Intaking", () -> {
             elevator.setState(ElevatorState.INTAKING);
             fourbar.FOURBAR_STATE = FourbarState.INTAKE;
         });
 
-        listenerLeft.addButtonUpListener("LowGoal", () -> {
+        listenerLeft.addButtonDownListener("LowGoal", () -> {
             elevator.setState(ElevatorState.LOW_GOAL);
             fourbar.FOURBAR_STATE = FourbarState.LOW;
         });
 
-        listenerLeft.addButtonUpListener("Turret0", () -> {
+        listenerLeft.addButtonDownListener("Turret0", () -> {
             turret.setState(TurretState.ZEROED);
         });
 
-        listenerLeft.addButtonUpListener("Turret90", () -> {
+        listenerLeft.addButtonDownListener("Turret90", () -> {
             turret.setState(TurretState.SIDE);
         });
 
-        listenerLeft.addButtonUpListener("Turret180", () -> {
+        listenerLeft.addButtonDownListener("Turret180", () -> {
             turret.setState(TurretState.BACKWARDS);
         });
     }

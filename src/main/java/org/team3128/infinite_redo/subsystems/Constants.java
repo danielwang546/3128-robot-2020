@@ -86,7 +86,8 @@ public class Constants extends RobotConstants{
     }
 
     public static class ClimberConstants {
-
+        public static final double CLIMB_POWER = 0.4;
+        public static final int CLIMBER_MOTOR_ID = 0;
     }
     
     public static class FourbarConstants {
