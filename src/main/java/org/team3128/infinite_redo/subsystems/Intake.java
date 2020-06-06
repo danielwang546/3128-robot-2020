@@ -23,9 +23,14 @@ public class Intake {
         MANIPULATOR_MOTOR = new LazyCANSparkMax(Constants.IntakeConstants.TOP_MOTOR_ID, MotorType.kBrushless);
     }
 
-    public void turnMotorsOn() {
+    public void turnMotorsIn() {
         TOP_ROLLER_MOTOR.set(0.4);
         BOTTOM_ROLLER_MOTOR.set(-0.4);
+    }
+
+    public void turnMotorsOut() {
+        TOP_ROLLER_MOTOR.set(-0.4);
+        BOTTOM_ROLLER_MOTOR.set(0.4);
     }
 
     public void turnMotorsOff() {
@@ -39,5 +44,9 @@ public class Intake {
 
     public void moveRollerDown() {
         MANIPULATOR_MOTOR.set(-0.4);
+    }
+
+    public void stopRoller() {
+        MANIPULATOR_MOTOR.set(0);
     }
 }
