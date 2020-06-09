@@ -14,8 +14,12 @@ public class climber{
         configMotors();
     }
 
+    public static Climber getInstance() {
+        return instance;
+    }
+
     private void configMotors() {
-        CLIMBER_MOTOR = new LazyCANSparkMax(Constants.ClimberConstants.CLIMBER_MOTOR_ID,MotorType.kBrushless);
+        CLIMBER_MOTOR = new LazyCANSparkMax(Constants.ClimberConstants.CLIMBER_MOTOR_ID, MotorType.kBrushless);
     }
 
     public void setPower(double power){
@@ -24,6 +28,7 @@ public class climber{
         } else {
             CLIMBER_MOTOR.set(0);
         }
+    }
 
     public void setisClimbing (boolean value) {
         isClimbing = value;
