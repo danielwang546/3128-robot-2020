@@ -3,14 +3,14 @@ package org.team3128.infinite_redo.subsystems;
 import org.team3128.common.hardware.motor.LazyCANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class Climber {
+public class climber{
     
-    public static final Climber instance = new Climber();
+    public static final climber instance = new climber();
 
     public LazyCANSparkMax CLIMBER_MOTOR;
     public boolean isClimbing = false; 
 
-    public Climber () {
+    public climber () {
         configMotors();
     }
 

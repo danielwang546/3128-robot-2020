@@ -86,7 +86,7 @@ public class Constants extends RobotConstants{
     }
 
     public static class ClimberConstants {
-
+        public static final int CLIMBER_MOTOR_ID = 0; 
     }
     
     public static class FourbarConstants {
@@ -136,4 +136,5 @@ public class Constants extends RobotConstants{
         public static final double ZEROING_POWER = -0.6;
 
     }
+
 }
